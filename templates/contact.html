@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact - Enjoy with R@hul</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Contact Us</h1>
+    <p>Phone: +91-9161728664</p>
+    <p>Email: enjoywithrahul@gmail.com</p>
+    <a href="/">Go Home</a>
+</body>
+</html>
+
+{% extends "base.html" %}
+
+{% block title %}Contact - Enjoy with R@hul{% endblock %}
+
+{% block content %}
+    <h1>Contact Us</h1>
+    <p>Phone: +91-9876543210</p>
+    <p>Email: enjoywithrahul@example.com</p>
+{% endblock %}
+

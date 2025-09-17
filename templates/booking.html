@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking - Enjoy with R@hul</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Booking</h1>
+    <p>Book your stay easily with us.</p>
+    <a href="/">Go Home</a>
+</body>
+</html>
+
+{% extends "base.html" %}
+
+{% block title %}Booking - Enjoy with R@hul{% endblock %}
+
+{% block content %}
+    <h1>Booking</h1>
+    <p>Book your stay easily with us.</p>
+{% endblock %}
+
