@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rooms - Enjoy with R@hul</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Our Rooms</h1>
+    <p>Relax and enjoy cozy homestay rooms with comfort.</p>
+    <a href="/">Go Home</a>
+</body>
+</html>
+
+{% extends "base.html" %}
+
+{% block title %}Rooms - Enjoy with R@hul{% endblock %}
+
+{% block content %}
+    <h1>Our Rooms</h1>
+    <p>Relax and enjoy cozy homestay rooms with comfort.</p>
+{% endblock %}
