@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Thank You - Enjoy with R@hul{% endblock %}
+
+{% block content %}
+    <div class="thankyou-box">
+        <h1>🎉 Thank You for Your Booking!</h1>
+        <p class="highlight">Dear <strong>{{ name }}</strong>, your booking has been received successfully ✅</p>
+
+        <h3>📋 Booking Details:</h3>
+        <ul>
+            <li><b>Email:</b> {{ email }}</li>
+            <li><b>Check-in:</b> {{ checkin }}</li>
+            <li><b>Check-out:</b> {{ checkout }}</li>
+            <li><b>Guests:</b> {{ guests }}</li>
+            <li><b>Room Type:</b> {{ room }}</li>
+        </ul>
+
+        <a href="/" class="home-btn">⬅ Go Back to Home</a>
+    </div>
+{% endblock %}
