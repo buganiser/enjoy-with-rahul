@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Authentic Curries - Enjoy with R@hul{% endblock %}
+
+{% block content %}
+<div class="hero" style="background: linear-gradient(135deg, #ff9933, #cc6600); height: 200px; display: flex; align-items: center; justify-content: center; flex-direction: column; color: white; text-align: center;">
+    <h1>🍛 Authentic Curries</h1>
+    <p>Rich, flavorful, and traditional recipes for you</p>
+</div>
+
+<div class="menu-list" style="max-width: 800px; margin: 40px auto; padding: 20px;">
+    {% for curry in curries %}
+    <div class="menu-item" style="background: #fff; padding: 20px; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <h2 style="margin: 0; color: #b22222;">{{ curry.name }}</h2>
+        {% if curry.ingredients %}
+        <p style="margin: 8px 0; color: #555;"><strong>Ingredients:</strong> {{ curry.ingredients }}</p>
+        {% endif %}
+        <p style="margin: 0; font-weight: bold; color: #333;">₹ {{ curry.price }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

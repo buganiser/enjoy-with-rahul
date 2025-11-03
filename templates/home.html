@@ -1,21 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home - Enjoy with R@hul</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-    <h1>Welcome to Enjoy with R@hul!</h1>
-</body>
-</html>
-
 {% extends "base.html" %}
 
 {% block title %}Home - Enjoy with R@hul{% endblock %}
 
 {% block content %}
-    <h1>Welcome to Enjoy with R@hul!</h1>
-    <p>Stay, relax, and enjoy homemade food in a cozy homestay.</p>
-{% endblock %}
+<!-- Hero Section -->
+<div class="hero">
+    <h1>Welcome to Enjoy with R@hul 🌿</h1>
+    <p>Stay • Eat • Relax • Enjoy</p>
+    <a href="/booking" class="btn">Book Your Stay</a>
+</div>
 
+<!-- Features Section -->
+<div class="features">
+    <div class="card">
+        <h2>🏡 Comfortable Rooms</h2>
+        <p>Choose from single, double or family rooms with extra beds.</p>
+        <a href="/rooms" class="btn">Explore Rooms</a>
+    </div>
+    <div class="card">
+        <h2>🍲 Delicious Food</h2>
+        <p>Enjoy homely cooked meals with a touch of tradition.</p>
+        <a href="/food" class="btn">View Menu</a>
+    </div>
+    <div class="card">
+        <h2>🌄 Relaxing Environment</h2>
+        <p>Experience peace, nature and a homestay vibe like never before.</p>
+        <a href="/contact" class="btn">Contact Us</a>
+    </div>
+</div>
+
+<!-- Testimonials Section -->
+<div class="testimonials">
+    <h2>What Our Guests Say</h2>
+    <div class="testimonial-card">
+        <p>“Amazing stay! Very cozy rooms and delicious food.”</p>
+        <span>- Raj</span>
+    </div>
+    <div class="testimonial-card">
+        <p>“Loved the environment and hospitality. Highly recommended!”</p>
+        <span>- Priya</span>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>© 2025 Enjoy with R@hul. All rights reserved.</p>
+    <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a>
+</footer>
+{% endblock %}

@@ -1,22 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Food - Enjoy with R@hul</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-    <h1>Delicious Food</h1>
-    <p>Enjoy home-cooked meals with traditional flavors.</p>
-    <a href="/">Go Home</a>
-</body>
-</html>
-
 {% extends "base.html" %}
 
 {% block title %}Food - Enjoy with R@hul{% endblock %}
 
 {% block content %}
-    <h1>Delicious Food</h1>
-    <p>Enjoy home-cooked meals with traditional flavors.</p>
+<div class="hero-food">
+    <h1>🍴 Delightful Flavors Await!</h1>
+    <p>Fresh, healthy & homely cooked meals for you</p>
+    <a href="/booking" class="btn">Book a Table</a>
+</div>
+
+<div class="features-food">
+    <!-- Fresh Salads (clickable) -->
+    <div class="card-food">
+        <a href="/food/salads" style="text-decoration: none; color: inherit;">
+            <h2>🥗 Fresh Salads</h2>
+            <p>Crisp, healthy, farm-fresh salads for a perfect start.</p>
+        </a>
+    </div>
+     <!-- Fresh curries (clickable) -->
+
+   <div class="card-food">
+    <a href="/food/curries" style="text-decoration: none; color: inherit;">
+        🍛 <strong>Authentic Curries</strong>
+        <p>Traditional recipes cooked to perfection, rich flavors.</p>
+    </a>
+</div>
+
+
+    <!-- Beverages & Desserts -->
+    <div class="card-food">
+    <a href="/food/beverages" style="text-decoration: none; color: inherit;">
+        🥤 <strong>Beverages</strong>
+        <p>Refreshing and energizing drinks for all moods.</p>
+    </a>
+</div>
+
+<div class="card-food">
+    <a href="/food/desserts" style="text-decoration: none; color: inherit;">
+        🍨 <strong>Desserts</strong>
+        <p>Sweet treats to end your meal on a happy note.</p>
+    </a>
+</div>
+
+</div>
 {% endblock %}

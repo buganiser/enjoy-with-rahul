@@ -1,22 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Rooms - Enjoy with R@hul</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-    <h1>Our Rooms</h1>
-    <p>Relax and enjoy cozy homestay rooms with comfort.</p>
-    <a href="/">Go Home</a>
-</body>
-</html>
-
 {% extends "base.html" %}
 
 {% block title %}Rooms - Enjoy with R@hul{% endblock %}
 
 {% block content %}
+<section class="hero-room">
     <h1>Our Rooms</h1>
-    <p>Relax and enjoy cozy homestay rooms with comfort.</p>
+    <p>Choose from cozy and comfortable rooms with or without food options.</p>
+</section>
+
+<div class="room-container">
+    <!-- Single Room -->
+    <div class="room-card">
+        <img src="{{ url_for('static', filename='images/single-room.jpg') }}" alt="Single Room">
+        <h2>Single Room</h2>
+        <p>Perfect for solo travelers seeking comfort and privacy.</p>
+        <ul>
+            <li>Without Food: ₹1200/night</li>
+            <li>Veg Option: ₹1500/night</li>
+            <li>Non-Veg Option: ₹1600/night</li>
+        </ul>
+        <a href="/booking" class="btn-room">Book Now</a>
+    </div>
+
+    <!-- Double Room -->
+    <div class="room-card">
+        <img src="{{ url_for('static', filename='images/double-room.jpg') }}" alt="Double Room">
+        <h2>Double Room</h2>
+        <p>Ideal for couples or friends looking for a cozy stay.</p>
+        <ul>
+            <li>Without Food: ₹2000/night</li>
+            <li>Veg Option: ₹2300/night</li>
+            <li>Non-Veg Option: ₹2500/night</li>
+        </ul>
+        <a href="/booking" class="btn-room">Book Now</a>
+    </div>
+
+    <!-- Double Room with Extra Bed -->
+    <div class="room-card">
+        <img src="{{ url_for('static', filename='images/double-extrabed.jpg') }}" alt="Double Room with Extra Bed">
+        <h2>Double Room with Extra Bed</h2>
+        <p>Perfect for small families or groups of three.</p>
+        <ul>
+            <li>Without Food: ₹2600/night</li>
+            <li>Veg Option: ₹2900/night</li>
+            <li>Non-Veg Option: ₹3100/night</li>
+        </ul>
+        <a href="/booking" class="btn-room">Book Now</a>
+    </div>
+
+    <!-- Deluxe Room -->
+    <div class="room-card">
+        <img src="{{ url_for('static', filename='images/deluxe-room.jpg') }}" alt="Deluxe Room">
+        <h2>Deluxe Room</h2>
+        <p>Experience premium comfort with additional luxury facilities.</p>
+        <ul>
+            <li>Without Food: ₹3500/night</li>
+            <li>Veg Option: ₹3800/night</li>
+            <li>Non-Veg Option: ₹4000/night</li>
+        </ul>
+        <a href="/booking" class="btn-room">Book Now</a>
+    </div>
+</div>
 {% endblock %}

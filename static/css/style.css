@@ -1,0 +1,398 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f9f9f9;
+}
+
+nav {
+    background: #333;
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.content {
+    padding: 20px;
+}
+
+/* ===== Hero Section Styling (Home Page) ===== */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("../images/image-0.jpeg") no-repeat center center/cover;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 22px;
+    margin: 10px 0 20px;
+}
+
+.hero .btn {
+    background: #ff6600;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.hero .btn:hover {
+    background: #cc5200;
+}
+
+/* Features Section */
+.features {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    width: 30%;
+    min-width: 250px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* Booking Forms Styling */
+.booking-form {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 450px;
+    margin: 20px auto;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.booking-form h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    text-align: center;
+}
+
+.booking-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.booking-form button {
+    background: linear-gradient(135deg, #ff6600, #ff3300);
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.booking-form button:hover {
+    background: linear-gradient(135deg, #ff3300, #cc0000);
+    transform: scale(1.03);
+}
+
+/* Check-in & Check-out side by side */
+.date-row {
+    display: flex;
+    gap: 15px;
+}
+
+.date-row div {
+    flex: 1;
+}
+
+.date-row input {
+    width: 100%;
+}
+
+/* Thank You Box */
+.thankyou-box {
+    background: #e6ffe6;
+    border: 2px solid #28a745;
+    border-radius: 12px;
+    padding: 25px;
+    margin: 30px auto;
+    max-width: 650px;
+    text-align: center;
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.1);
+}
+
+.thankyou-box h1 {
+    color: #28a745;
+    margin-bottom: 15px;
+}
+
+.highlight {
+    font-size: 18px;
+    color: #155724;
+    margin-bottom: 20px;
+}
+
+.thankyou-box ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.thankyou-box ul li {
+    background: #f8fff8;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #d4edda;
+}
+
+.home-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 18px;
+    background: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.home-btn:hover {
+    background: #218838;
+}
+
+/* ===== Food Page Hero ===== */
+.hero-food {
+    position: relative;
+    background: url("../images/image-4.jpeg") no-repeat center center/cover;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.hero-food::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.2));
+    z-index: 1;
+}
+
+.hero-food h1, .hero-food p, .hero-food .btn {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-food h1 {
+    font-size: 52px;
+    margin: 0;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+}
+
+.hero-food p {
+    font-size: 22px;
+    margin: 15px 0 30px;
+}
+
+.hero-food .btn {
+    background: #ff4d4d;
+    color: white;
+    padding: 14px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.4s;
+}
+
+.hero-food .btn:hover {
+    background: #e60000;
+    transform: scale(1.05);
+}
+
+/* Food Cards */
+.features-food {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin: 50px 20px;
+}
+
+.card-food {
+    background: #fff;
+    padding: 25px;
+    width: 300px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-food img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+}
+
+.card-food:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.25);
+}
+
+.card-food h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.card-food p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* ===== Rooms Page Styling ===== */
+.hero-room {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("../images/room-bg.jpeg") no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.hero-room h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.hero-room p {
+    font-size: 20px;
+}
+
+.room-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin: 50px 20px;
+}
+
+.room-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+    width: 300px;
+    text-align: center;
+    padding: 25px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.room-card img {
+    width: 100%;
+    height: 180px;
+    border-radius: 12px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.room-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+}
+
+.room-card h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.room-card p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.room-card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.room-card ul li {
+    background: #f9f9f9;
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.btn-room {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #ff6600, #ff3300);
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-room:hover {
+    background: linear-gradient(135deg, #ff3300, #cc0000);
+    transform: scale(1.05);
+}
+
+

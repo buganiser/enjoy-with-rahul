@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Fresh Salads - Enjoy with R@hul{% endblock %}
+
+{% block content %}
+<div class="hero" style="background: linear-gradient(135deg, #77dd77, #4CAF50); height: 200px; display: flex; align-items: center; justify-content: center; flex-direction: column; color: white; text-align: center;">
+    <h1>🥗 Fresh Salads</h1>
+    <p>Healthy, tasty, and refreshing options just for you</p>
+</div>
+
+<div class="menu-list" style="max-width: 800px; margin: 40px auto; padding: 20px;">
+    {% for salad in salads %}
+    <div class="menu-item" style="background: #fff; padding: 20px; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <h2 style="margin: 0; color: #2e7d32;">{{ salad.name }}</h2>
+        {% if salad.ingredients %}
+        <p style="margin: 8px 0; color: #555;"><strong>Ingredients:</strong> {{ salad.ingredients }}</p>
+        {% endif %}
+        <p style="margin: 0; font-weight: bold; color: #333;">₹ {{ salad.price }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

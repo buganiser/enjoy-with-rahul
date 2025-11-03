@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Desserts - Enjoy with R@hul{% endblock %}
+
+{% block content %}
+<div class="hero" style="background: linear-gradient(135deg, #ff9a9e, #fecfef); height: 200px; display: flex; align-items: center; justify-content: center; flex-direction: column; color: white;">
+    <h1>🍰 Desserts</h1>
+    <p>Sweet treats to delight your taste buds</p>
+</div>
+
+<div class="menu-list" style="max-width: 800px; margin: 40px auto; padding: 20px;">
+    {% for dessert in desserts %}
+    <div class="menu-item" style="background: #fff; padding: 20px; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <h2 style="margin: 0; color: #ff1493;">{{ dessert.name }}</h2>
+        {% if dessert.ingredients %}
+        <p style="margin: 8px 0; color: #555;"><strong>Ingredients:</strong> {{ dessert.ingredients }}</p>
+        {% endif %}
+        <p style="margin: 0; font-weight: bold; color: #333;">₹ {{ dessert.price }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

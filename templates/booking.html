@@ -3,42 +3,82 @@
 {% block title %}Booking - Enjoy with R@hul{% endblock %}
 
 {% block content %}
-<h1>Booking</h1>
-<p>Fill the form below to book your stay with us:</p>
+<h1 style="text-align:center; margin-bottom:30px;">Booking</h1>
 
-<form action="/booking" method="post" class="booking-form">
-    
-    <!-- Name -->
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required><br><br>
+<div class="booking-container">
 
-    <!-- Email -->
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required><br><br>
+    <!-- Dining Form -->
+    <form action="/booking" method="post" class="booking-form">
+        <h2>🍽 Lunch / Dinner Reservation</h2>
+        <input type="hidden" name="booking_type" value="dining">
 
-    <!-- Date Range -->
-    <label for="checkin">Check-in Date:</label>
-    <input type="date" id="checkin" name="checkin" required><br><br>
+        <label for="name">Name:</label>
+        <input type="text" name="name" required>
 
-    <label for="checkout">Check-out Date:</label>
-    <input type="date" id="checkout" name="checkout" required><br><br>
+        <label for="email">Email:</label>
+        <input type="email" name="email" required>
 
-    <!-- Guests -->
-    <label for="guests">Number of Guests:</label>
-    <input type="number" id="guests" name="guests" min="1" required><br><br>
+        <label for="phone">Phone:</label>
+        <input type="tel" name="phone" required>
 
-    <!-- Room Type -->
-    <label for="room">Room Type:</label>
-    <select id="room" name="room" required>
-        <option value="single">Single</option>
-        <option value="double">Double</option>
-        <option value="double-extra">Double with Extra Bed</option>
-        <option value="single-extra">Single with Extra Bed</option>
-        <option value="two-sharing">Two sharing</option>
-        <option value="three-sharing">Three sharing</option>
-    </select><br><br>
+        <label for="date">Date:</label>
+        <input type="date" name="date" required>
 
-    <!-- Submit -->
-    <button type="submit">Book Now</button>
-</form>
+        <label for="guests">Number of Guests:</label>
+        <input type="number" name="guests" min="1" required>
+
+        <label for="food">Food Option:</label>
+        <select name="food" required>
+            <option value="veg">Veg</option>
+            <option value="non-veg">Non Veg</option>
+            <option value="both">Both</option>
+        </select>
+
+        <button type="submit">Reserve Now</button>
+    </form>
+
+    <!-- Stay Form -->
+    <form action="/booking" method="post" class="booking-form">
+        <h2>🏨 Stay / Room Booking</h2>
+        <input type="hidden" name="booking_type" value="stay">
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" required>
+
+        <div class="date-row">
+            <div>
+                <label for="checkin">Check-in Date:</label>
+                <input type="date" name="checkin" required>
+            </div>
+            <div>
+                <label for="checkout">Check-out Date:</label>
+                <input type="date" name="checkout" required>
+            </div>
+        </div>
+
+        <label for="guests">Number of Guests:</label>
+        <input type="number" name="guests" min="1" required>
+
+        <label for="room">Room Type:</label>
+        <select name="room" required>
+            <option value="single">Single</option>
+            <option value="double">Double</option>
+            <option value="double-extra">Double with Extra Bed</option>
+            <option value="two-sharing">Two Sharing</option>
+            <option value="three-sharing">Three Sharing</option>
+        </select>
+
+        <label for="food">Food Option:</label>
+        <select name="food" required>
+            <option value="veg">Veg</option>
+            <option value="non-veg">Non Veg</option>
+            <option value="both">Both</option>
+        </select>
+
+        <button type="submit">Book Now</button>
+    </form>
+</div>
 {% endblock %}
