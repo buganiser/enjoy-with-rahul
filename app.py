@@ -1,6 +1,40 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash, redirect, url_for
+from datetime import datetime
+from markupsafe import escape
 
 app = Flask(__name__)
+app.secret_key = 'your-secret-key-change-in-production'
+
+def validate_email(email):
+    """Basic email validation"""
+    import re
+    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    return re.match(pattern, email) is not None
+
+def validate_date(date_str, field_name):
+    """Validate date format and return datetime object"""
+    try:
+        return datetime.strptime(date_str, '%Y-%m-%d').date()
+    except ValueError:
+        raise ValueError(f"Invalid {field_name} format. Use YYYY-MM-DD.")
+
+def validate_guests(guests_str):
+    """Validate guest count"""
+    try:
+        guests = int(guests_str)
+        if guests < 1:
+            raise ValueError("Number of guests must be at least 1.")
+        if guests > 20:
+            raise ValueError("Number of guests cannot exceed 20.")
+        return guests
+    except ValueError as e:
+        if "guests" in str(e).lower():
+            raise
+        raise ValueError("Invalid number of guests.")
+
+def sanitize_input(value):
+    """Sanitize input to prevent XSS"""
+    return escape(value.strip()) if value else ''
 
 # Home page
 @app.route('/')
@@ -21,15 +55,51 @@ def food():
 @app.route('/booking', methods=['GET', 'POST'])
 def booking():
     if request.method == 'POST':
-        booking_type = request.form['booking_type']
+        booking_type = request.form.get('booking_type', '')
+
+        # Common validation
+        errors = []
+
+        # Sanitize and validate common fields
+        name = sanitize_input(request.form.get('name', ''))
+        email = sanitize_input(request.form.get('email', ''))
+        phone = sanitize_input(request.form.get('phone', ''))
+        guests_str = request.form.get('guests', '')
+
+        if not name:
+            errors.append("Name is required.")
+        if not email:
+            errors.append("Email is required.")
+        elif not validate_email(email):
+            errors.append("Invalid email format.")
+        if not phone:
+            errors.append("Phone is required.")
+        try:
+            guests = validate_guests(guests_str)
+        except ValueError as e:
+            errors.append(str(e))
 
         if booking_type == "dining":
-            name = request.form['name']
-            email = request.form['email']
-            phone = request.form['phone']
-            date = request.form['date']
-            guests = request.form['guests']
-            food = request.form['food']
+            date_str = request.form.get('date', '')
+            food = sanitize_input(request.form.get('food', ''))
+
+            if not date_str:
+                errors.append("Date is required.")
+            else:
+                try:
+                    booking_date = validate_date(date_str, 'date')
+                    if booking_date < datetime.now().date():
+                        errors.append("Booking date cannot be in the past.")
+                except ValueError as e:
+                    errors.append(str(e))
+
+            if not food:
+                errors.append("Food option is required.")
+
+            if errors:
+                for error in errors:
+                    flash(error, 'error')
+                return render_template('booking.html'), 400
 
             return render_template(
                 "thankyou.html",
@@ -37,27 +107,59 @@ def booking():
                 name=name,
                 email=email,
                 phone=phone,
-                date=date,
+                date=date_str,
                 guests=guests,
                 food=food
             )
 
         elif booking_type == "stay":
-            name = request.form['name']
-            email = request.form['email']
-            checkin = request.form['checkin']
-            checkout = request.form['checkout']
-            guests = request.form['guests']
-            room = request.form['room']
-            food = request.form['food']
+            checkin_str = request.form.get('checkin', '')
+            checkout_str = request.form.get('checkout', '')
+            room = sanitize_input(request.form.get('room', ''))
+            food = sanitize_input(request.form.get('food', ''))
+
+            if not checkin_str:
+                errors.append("Check-in date is required.")
+            if not checkout_str:
+                errors.append("Check-out date is required.")
+
+            checkin_date = None
+            checkout_date = None
+            if checkin_str:
+                try:
+                    checkin_date = validate_date(checkin_str, 'check-in')
+                    if checkin_date < datetime.now().date():
+                        errors.append("Check-in date cannot be in the past.")
+                except ValueError as e:
+                    errors.append(str(e))
+
+            if checkout_str:
+                try:
+                    checkout_date = validate_date(checkout_str, 'check-out')
+                except ValueError as e:
+                    errors.append(str(e))
+
+            if checkin_date and checkout_date and checkin_date >= checkout_date:
+                errors.append("Check-out date must be after check-in date.")
+
+            if not room:
+                errors.append("Room type is required.")
+            if not food:
+                errors.append("Food option is required.")
+
+            if errors:
+                for error in errors:
+                    flash(error, 'error')
+                return render_template('booking.html'), 400
 
             return render_template(
                 "thankyou.html",
                 booking_type="Stay",
                 name=name,
                 email=email,
-                checkin=checkin,
-                checkout=checkout,
+                phone=phone,
+                checkin=checkin_str,
+                checkout=checkout_str,
                 guests=guests,
                 room=room,
                 food=food

@@ -10,10 +10,17 @@
         <h3>📋 Booking Details:</h3>
         <ul>
             <li><b>Email:</b> {{ email }}</li>
-            <li><b>Check-in:</b> {{ checkin }}</li>
-            <li><b>Check-out:</b> {{ checkout }}</li>
+            <li><b>Phone:</b> {{ phone }}</li>
             <li><b>Guests:</b> {{ guests }}</li>
-            <li><b>Room Type:</b> {{ room }}</li>
+            {% if booking_type == "Dining" %}
+                <li><b>Date:</b> {{ date }}</li>
+                <li><b>Food Option:</b> {{ food }}</li>
+            {% else %}
+                <li><b>Check-in:</b> {{ checkin }}</li>
+                <li><b>Check-out:</b> {{ checkout }}</li>
+                <li><b>Room Type:</b> {{ room }}</li>
+                <li><b>Food Option:</b> {{ food }}</li>
+            {% endif %}
         </ul>
 
         <a href="/" class="home-btn">⬅ Go Back to Home</a>
