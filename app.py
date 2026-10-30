@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request, flash, redirect, url_for
 from datetime import datetime
 from markupsafe import escape
+import os
 
 app = Flask(__name__)
-app.secret_key = 'your-secret-key-change-in-production'
+app.secret_key = os.environ.get('SECRET_KEY', 'dev-only-change-in-prod')
 
 def validate_email(email):
     """Basic email validation"""
@@ -268,4 +269,5 @@ def desserts_page():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    debug_mode = os.environ.get('FLASK_DEBUG', 'false').lower() == 'true'
+    app.run(debug=debug_mode)
